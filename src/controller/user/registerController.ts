@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import userDto from '../../DTO/userDto';
-import registerService from '../../services/user/userService';
+import registerService from '../../services/user/candidate/userService';
 
 let register = async (req: Request, res: Response): Promise<any> => {
     try {

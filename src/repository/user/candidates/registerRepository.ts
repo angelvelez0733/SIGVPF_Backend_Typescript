@@ -1,5 +1,5 @@
-import userDto from '../DTO/userDto';
-import db from '../config/configDB';
+import userDto from '../../../DTO/userDto';
+import db from '../../../config/configDB';
 import  bcrypt from 'bcryptjs';
 
 
