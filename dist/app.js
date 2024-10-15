@@ -10,7 +10,7 @@ const user_1 = __importDefault(require("./routes/user/user"));
 const auth_1 = __importDefault(require("./routes/auth"));
 const app = (0, express_1.default)().use(body_parser_1.default.json());
 dotenv_1.default.config();
-app.use('/register', user_1.default);
+app.use('/candidate', user_1.default);
 app.use('/auth', auth_1.default);
 const PORT = process.env.PORT || 10240;
 app.listen(PORT, () => {
