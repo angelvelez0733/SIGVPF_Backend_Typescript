@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const userDto_1 = __importDefault(require("../../DTO/userDto"));
-const userService_1 = __importDefault(require("../../services/user/userService"));
+const userService_1 = __importDefault(require("../../services/user/candidate/userService"));
 let register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { document, name, last_name, address, email, password, phone } = req.body;
