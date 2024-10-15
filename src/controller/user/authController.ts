@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import AuthService from '../../services/authService';
 import Auth from '../../DTO/auth';
 
-const auth = async (req: Request, res: Response)  => {
+const auth = async (req: Request, res: Response): Promise<void> => {
     try {
         
         const {
@@ -12,17 +12,18 @@ const auth = async (req: Request, res: Response)  => {
 
         const token: any = await AuthService.auth(new Auth(email, password));
         if(token){
-            return res.status(200).json({
+            res.status(200).json({
                 status: 'Successful authentication',
                 Access: token,
             });
         }
-        return res.status(401).json({
+        res.status(401).json({
             status: 'Invalid email or password', 
-        })
+        });
     } catch (error: any) {
-        return res.status(500).send({
-            error: 'Internal Server error', errorInfo: error.message
+        res.status(500).send({
+            error: 'Internal Server error', 
+            errorInfo: error.message
         });
     }
 }
