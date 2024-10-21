@@ -5,8 +5,29 @@ import {
   validatorRegister,
   validationParamsRegister,
 } from "../../middlewares/validators/registerValidator";
+import validateToken from "../../middlewares/validateToken";
+import {
+  validatorUpdate,
+  validateParametersUpdate,
+} from "../../middlewares/validators/updateValidator";
+
 import registerController from "../../controller/user/registerController";
 
-router.post("/register", validationParamsRegister, validatorRegister, registerController);
+import updateData from "../../controller/user/updateDataCandidate";
+
+router.post(
+  "/register",
+  validationParamsRegister,
+  validatorRegister,
+  registerController
+);
+
+router.put(
+  "/update",
+  validateToken(["candidate"]),
+  validateParametersUpdate,
+  validatorUpdate,
+  updateData
+);
 
 export default router;

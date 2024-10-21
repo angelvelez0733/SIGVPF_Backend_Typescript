@@ -4,16 +4,16 @@ class User {
     private _last_name: string;
     private _address: string;
     private _email: string; 
-    private _password: string;
+   // private _password?: string;
     private _phone: number;
 
-    constructor(document: string, name: string, last_name: string, address: string, email: string, password: string, phone: number){
+    constructor(document: string, name: string, last_name: string, address: string, email: string, phone: number){
         this._document = document;
         this._name = name;
         this._last_name = last_name;
         this._address = address;
         this._email = email;
-        this._password = password;
+        //this._password = password;
         this._phone = phone;
     }
 
@@ -39,9 +39,9 @@ class User {
         return this._email;
     }
 
-    public get password (): string {
-        return this._password;
-    }
+    //public get password (): string | undefined {
+       // return this._password;
+    //}
 
     public get phone (): number {
         return this._phone;
@@ -69,11 +69,12 @@ class User {
         this._email = email;
     }
 
-    public set password(password: string) {
-        this._password = password;
-    }
+    //public set password(password: string) {
+      //  this._password = password;
+    //}
 
     public set phone(phone: number) {
         this._phone = phone;
     }
 }
+export  default User;

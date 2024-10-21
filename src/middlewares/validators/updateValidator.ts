@@ -21,7 +21,7 @@ const validateParametersUpdate = [
     .optional(),
 ];
 
-function validatorUpdate(req: Request, res:Response,  next: NextFunction) {
+function validatorUpdate(req: Request, res:Response,  next: NextFunction): any {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).json({
