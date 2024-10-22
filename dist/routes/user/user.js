@@ -11,5 +11,5 @@ const updateValidator_1 = require("../../middlewares/validators/updateValidator"
 const registerController_1 = __importDefault(require("../../controller/user/registerController"));
 const updateDataCandidate_1 = __importDefault(require("../../controller/user/updateDataCandidate"));
 router.post("/register", registerValidator_1.validationParamsRegister, registerValidator_1.validatorRegister, registerController_1.default);
-router.put("/update", (0, validateToken_1.default)(["candidate"]), updateValidator_1.validateParametersUpdate, updateValidator_1.validatorUpdate, updateDataCandidate_1.default);
+router.put("/update", (0, validateToken_1.default)(['user']), updateValidator_1.validateParametersUpdate, updateValidator_1.validatorUpdate, updateDataCandidate_1.default);
 exports.default = router;

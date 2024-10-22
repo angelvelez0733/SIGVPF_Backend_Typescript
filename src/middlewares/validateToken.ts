@@ -18,13 +18,14 @@ const validateToken =  (allowedRoles: string[]) => {
                 return res.status(401).json({
                     status: 'You dont send token'
                 });
-            }
+            }            
             const decoded = jwt.verify(
                 token, 
                 process.env.SECRET as string,
             ) as JwtPayload;
             const userRole = decoded.data.role;
-
+            console.log(userRole);
+            
             if (!allowedRoles.includes(userRole)) {
                 return res.status(403).json({
                     status: 'Access denied'
@@ -33,8 +34,9 @@ const validateToken =  (allowedRoles: string[]) => {
 
             req.body.tokenEmail = decoded.data.email;
             req.body.tokenRole = decoded.data.role;
-
-            return next();
+            console.log(decoded);            
+            
+            return next();            
         } catch (error: any) {
             console.error('Error', error.stack);
             return res.status(403).json({

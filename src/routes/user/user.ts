@@ -24,7 +24,7 @@ router.post(
 
 router.put(
   "/update",
-  validateToken(["candidate"]),
+  validateToken(['user']),
   validateParametersUpdate,
   validatorUpdate,
   updateData

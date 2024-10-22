@@ -16,7 +16,7 @@ const connection = mysql2_1.default.createPool({
 });
 connection.getConnection((err, conn) => {
     if (err) {
-        console.log('Error de conexion a labase de datos');
+        console.log('Error de conexion a la base de datos');
         if (conn) {
             conn.release();
         }
