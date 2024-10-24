@@ -7,7 +7,7 @@ const app =  express().use(bodyParser.json());
 
 dotenv.config();
 
-app.use('/register', register);
+app.use('/candidate', register);
 
 const PORT = process.env.PORT || 10240;
 

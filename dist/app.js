@@ -9,7 +9,7 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const user_1 = __importDefault(require("./routes/user/user"));
 const app = (0, express_1.default)().use(body_parser_1.default.json());
 dotenv_1.default.config();
-app.use('/register', user_1.default);
+app.use('/candidate', user_1.default);
 const PORT = process.env.PORT || 10240;
 app.listen(PORT, () => {
     console.log(`Servidor ejecutado en el puerto: ${PORT}`);
