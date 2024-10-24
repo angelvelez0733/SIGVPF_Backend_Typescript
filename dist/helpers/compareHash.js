@@ -12,15 +12,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const configDB_1 = __importDefault(require("../config/configDB"));
-class registerService {
-    static register(user) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const sql = 'SELECT register_user(?,?,?,?,?,?,?) AS message';
-            const values = [user.document, user.name, user.last_name, user.address, user.email, user.password, user.phone];
-            const [rows] = yield configDB_1.default.query(sql, values);
-            return rows[0].message;
-        });
-    }
-}
-exports.default = registerService;
+const bcryptjs_1 = __importDefault(require("bcryptjs"));
+const compareHash = (data, dataCompare) => __awaiter(void 0, void 0, void 0, function* () {
+    const isPasswordValid = yield bcryptjs_1.default.compare(data, dataCompare);
+    return isPasswordValid;
+});
+exports.default = compareHash;

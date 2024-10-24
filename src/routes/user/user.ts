@@ -1,12 +1,7 @@
-import express from "express";
-const router = express.Router();
+import express from 'express';
+import registerController from '../../controller/user/registerController';
+const router =  express.Router();
 
-import {
-  validatorRegister,
-  validationParamsRegister,
-} from "../../middlewares/validators/registerValidator";
-import registerController from "../../controller/user/registerController";
-
-router.post("/register", validationParamsRegister, validatorRegister, registerController);
+router.post('/', registerController);
 
 export default router;
