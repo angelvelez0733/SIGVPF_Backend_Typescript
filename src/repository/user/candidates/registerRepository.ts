@@ -1,14 +1,13 @@
 import userDto from '../../../DTO/userDto';
 import db from '../../../config/configDB';
+import  bcrypt from 'bcryptjs';
 
 
 class registerService {
     static async register (user: userDto) {
-        const sql = 'SELECT register_user(?,?,?,?,?,?,?) AS message';
+        const sql = 'INSERT INTO users (document, name, last_name, address, email, password, phone) values (?,?,?,?,?,?,?)';
         const values = [user.document, user.name, user.last_name, user.address, user.email, user.password, user.phone];
-
-        const [rows]: any = await db.query(sql, values);
-        return rows[0].message;
+        return db.query(sql, values);
     }
 }
 
