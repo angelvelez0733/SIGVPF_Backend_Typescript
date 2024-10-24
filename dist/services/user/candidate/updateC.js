@@ -12,15 +12,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const configDB_1 = __importDefault(require("../config/configDB"));
-class registerService {
-    static register(user) {
+const updateData_1 = __importDefault(require("../../../repository/user/updateData"));
+class candidate {
+    static updateC(user) {
         return __awaiter(this, void 0, void 0, function* () {
-            const sql = 'SELECT register_user(?,?,?,?,?,?,?) AS message';
-            const values = [user.document, user.name, user.last_name, user.address, user.email, user.password, user.phone];
-            const [rows] = yield configDB_1.default.query(sql, values);
-            return rows[0].message;
+            try {
+                const result = yield updateData_1.default.update(user);
+                if (result && result[0] && result[0]['message'] === 'Usuario actualizado exitosamente') {
+                    console.error('No record was updated. Verify that email is correct.', result.message);
+                }
+                return { success: true, message: 'successful Update' };
+            }
+            catch (error) {
+                console.error('Error updating  user:', error.message);
+                return { success: false, message: error.message };
+            }
         });
     }
 }
-exports.default = registerService;
+exports.default = candidate;

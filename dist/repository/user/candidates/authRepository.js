@@ -12,15 +12,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const configDB_1 = __importDefault(require("../config/configDB"));
-class registerService {
-    static register(user) {
+const configDB_1 = __importDefault(require("../../../config/configDB"));
+class AuthRepository {
+    static authCandidate(email) {
         return __awaiter(this, void 0, void 0, function* () {
-            const sql = 'SELECT register_user(?,?,?,?,?,?,?) AS message';
-            const values = [user.document, user.name, user.last_name, user.address, user.email, user.password, user.phone];
-            const [rows] = yield configDB_1.default.query(sql, values);
-            return rows[0].message;
+            const sql = 'SELECT password FROM users WHERE email = (?)';
+            const values = [email];
+            try {
+                const res = yield configDB_1.default.query(sql, values);
+                return res[0];
+            }
+            catch (error) {
+                console.error('Error executing query', error.stack);
+                throw error;
+            }
         });
     }
 }
-exports.default = registerService;
+exports.default = AuthRepository;
