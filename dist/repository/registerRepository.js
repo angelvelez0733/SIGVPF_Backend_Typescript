@@ -16,10 +16,9 @@ const configDB_1 = __importDefault(require("../config/configDB"));
 class registerService {
     static register(user) {
         return __awaiter(this, void 0, void 0, function* () {
-            const sql = 'SELECT register_user(?,?,?,?,?,?,?) AS message';
+            const sql = 'INSERT INTO users (document, name, last_name, address, email, password, phone) values (?,?,?,?,?,?,?)';
             const values = [user.document, user.name, user.last_name, user.address, user.email, user.password, user.phone];
-            const [rows] = yield configDB_1.default.query(sql, values);
-            return rows[0].message;
+            return configDB_1.default.query(sql, values);
         });
     }
 }
